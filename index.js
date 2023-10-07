@@ -25,6 +25,9 @@ function datechange(month, year) {
 
 }
 
+const hy1 = document.querySelector('.but1');
+const hy2 = document.querySelector('.but2');
+
 
 
 datechange(mn, yr);
@@ -65,6 +68,33 @@ function fn1() {
 
 }
 imp2.addEventListener('change', fn);
+
+
+let yrs = inp1.value;
+hy1.addEventListener('click', () => {
+
+    let ind11 = monthname.indexOf(imp2.value);
+    if (ind11 == 11) {
+        ind11 -= 12;
+        yrs++;
+        inp1.value = yrs;
+
+    }
+    imp2.value = monthname[ind11 + 1];
+    datechange(ind11 + 1, yrs);
+});
+hy2.addEventListener('click', () => {
+    {
+        let ind11 = monthname.indexOf(imp2.value);
+        if (ind11 == 0) {
+            ind11 += 12;
+            yrs--;
+            inp1.value = yrs;
+        }
+        imp2.value = monthname[ind11 - 1];
+        datechange(ind11 - 1, yrs);
+    }
+});
 
 function fn() {
     thisref = this.value.toLowerCase();
